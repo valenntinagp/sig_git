@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrio Timiza - Bogotá</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            text-transform: uppercase;
+            font-size: 36px;
+        }
+        .content {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .image-container {
+            max-width: 600px;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        #map {
+            height: 400px;
+            width: 600px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Timiza
+</header>
+
+<div class="content">
+    <div class="image-container">
+        <h2>Imagen del Barrio Timiza</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Timiza_%28Bogot%C3%A1%29.jpg/1280px-Timiza_%28Bogot%C3%A1%29.jpg" alt="Barrio Timiza, Bogotá">
+    </div>
+    <div id="map"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // Coordenadas del barrio Timiza en Bogotá
+    const timizaLatLng = [4.5911, -74.1228];
+
+    // Crear el mapa
+    const map = L.map('map').setView(timizaLatLng, 15);
+
+    // Cargar el mapa desde OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Agregar marcador
+    L.marker(timizaLatLng).addTo(map)
+        .bindPopup('<b>Barrio Timiza</b>')
+        .openPopup();
+</script>
+
+</body>
+</html>
